@@ -1,6 +1,6 @@
 package algorithm2;
 
-public class Nov1st {
+public class Nov1st_1 {
 	//알고리즘의 효율성문제
 	//시간과 메모리,, 무엇을 택할 것이냐
 	//예제는 단순 계산횟수로 측정
