@@ -9,7 +9,6 @@ public class Nov1st_2 {
 		int no;
 		int cd;
 		int dno;
-		int retry;
 		char[]cno =new char[32];
 		System.out.println("10진수를 기수변환합니다");
 
@@ -30,7 +29,9 @@ public class Nov1st_2 {
 		for(int i=0;i<dno;i++) {
 			System.out.print(cno[i]);
 		}
-
+		System.out.println();
+		//별찍기또하자
+		star(13);
 	}
 
 	private static int cardConv(int x, int r, char[] d) {
@@ -46,6 +47,21 @@ public class Nov1st_2 {
 			d[digits-i-1]=t;
 		}
 		return digits;
+	}
+	static void star(int a) {
+		for(int i=0;i<(a+1)/2;i++) {
+			for(int j=a/2;j>i;j--) {
+				System.out.print(" ");
+			}
+			if(i==0)System.out.print("*");
+			for(int k=1;k<i*2+1;k++) {
+				System.out.print("*");
+			}
+//			for(int j=a/2;j>i;j--) {
+//				System.out.print(" ");
+//			}
+			System.out.println();
+		}
 	}
 }
 
