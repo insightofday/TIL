@@ -1,0 +1,38 @@
+   For i = 1 To 6
+            rowIndexes(i) = 2   ' 각 열마다 2행부터 시작
+        Next
+        
+        Do While Not rs.EOF
+            currentProcessID = CheckNum(rs!processid)
+            colIndex = GetColumnIndexByProcessID(currentProcessID)
+            
+            If colIndex > 0 And rowIndexes(colIndex) <= 5 Then
+                Dim currentRow As Long
+                currentRow = rowIndexes(colIndex)
+                
+                
+                sWorkData = "공사명: " & CheckNull(rs!Title) & vbCrLf & _
+                            "품명: " & CheckNull(rs!MACD_NAME) & vbCrLf & _
+                            "LotNo: " & CheckNull(rs!lotno) & vbCrLf & _
+                            "시작시간: " & Format(CheckNull(rs!starttime), "00:00")
+                
+                Call Gf_SetSpdValue(spdWorkList, currentRow, colIndex, sWorkData)
+        
+                ' 현재 열의 행 인덱스 증가
+                rowIndexes(colIndex) = rowIndexes(colIndex) + 1
+            End If
+        
+            rs.MoveNext
+        Loop
+
+
+Private Function GetColumnIndexByProcessID(processid As Long) As Integer
+    Select Case processid
+        Case 1001: GetColumnIndexByProcessID = 1
+        Case 2001: GetColumnIndexByProcessID = 2
+        Case 3001: GetColumnIndexByProcessID = 3
+        Case 4001: GetColumnIndexByProcessID = 4
+        Case 5001: GetColumnIndexByProcessID = 5
+        Case 6001: GetColumnIndexByProcessID = 6
+    End Select
+End Function
